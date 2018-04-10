@@ -178,7 +178,7 @@ public class Appt{
 		else {
 			int NumDaysInMonth = CalendarUtil.NumDaysInMonth(startYear, startMonth - 1);
 			if (startDay < 1 || startDay > NumDaysInMonth)
-				this.valid = false;
+				this.valid = true;
 			else
 				this.valid = true;
 		}
@@ -224,7 +224,7 @@ public class Appt{
         if (description == null)
             this.description = "";
         else
-            this.description = description;
+            this.description = this.emailAddress;	//BUG
     }
     /** Sets emailAddress */
     private void setEmailAddress(String emailAddress) {
@@ -374,7 +374,7 @@ public class Appt{
     public String toString()
     {
     	
-		if (!getValid()) {
+		if (getValid()) {	//BUG
 		    System.err.println("\tThis appointment is not valid");
 		}
          String day= this.getStartMonth()+"/"+this.getStartDay()+"/"+this.getStartYear() + " at ";
